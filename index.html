@@ -129,7 +129,7 @@
         </div>
         <div id="result" class="result">
             <h2>Here's your VAST</h2>
-            <textarea id="result-url" rows="5" readonly style="width: 550px; height: 100px;"></textarea>
+            <textarea id="result-url" rows="5" readonly style="width: 550px; max-width:80vw; height: 100px;"></textarea>
             <button onclick="copyToClipboard()">Copy to Clipboard</button>
         </div>
         <div class="disclaimer">
@@ -168,7 +168,7 @@
             const answer6 = document.getElementById('answer6').value;
             const answer7 = document.getElementById('answer7').value;
 
-            const url = `https://pubads.g.doubleclick.net/gampad/ads?iu=${answer1}&sz=${answer2}&vpa=${answer3}&vpmute=${answer4}&env=${answer5}&gdfp_req=${answer6}&plcmt=${answer7}&output=vast&unviewed_position_start=1&url=[placeholder]&description_url=[placeholder]&orrelator=`;
+            const url = `https://pubads.g.doubleclick.net/gampad/ads?iu=${answer1}&sz=${answer2}&vpa=${answer3}&vpmute=${answer4}&env=${answer5}&gdfp_req=${answer6}&plcmt=${answer7}&output=vast&unviewed_position_start=1&url=[placeholder]&description_url=[placeholder]&correlator=`;
             document.getElementById('result-url').textContent = url;
             document.getElementById('result').classList.add('active');
         }
