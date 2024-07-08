@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wizard Form</title>
+    <title>Vast Generator</title>
     <style>
         .wizard-step {
             display: none;
@@ -19,13 +19,13 @@
 <body>
     <div id="wizard">
         <div class="wizard-step active" id="step1">
-            <h2>Step 1</h2>
-            <p>Question 1: <input type="text" id="answer1"></p>
+            <h2>Informações Obrigatórias</h2>
+            <p>Network Code: <input type="text" id="answer1" placeholder="/12345/slotname"></p>
             <button onclick="nextStep(1)">Next</button>
         </div>
         <div class="wizard-step" id="step2">
-            <h2>Step 2</h2>
-            <p>Question 2: <input type="text" id="answer2"></p>
+            <h2>Informações Obrigatórias</h2>
+            <p>Size: <input type="text" id="answer2" value="300x250|400x300|640x480"></p>
             <button onclick="nextStep(2)">Next</button>
         </div>
         <div class="wizard-step" id="step3">
@@ -48,9 +48,10 @@
         function showResult() {
             const answer1 = document.getElementById('answer1').value;
             const answer2 = document.getElementById('answer2').value;
+            answer2 = encodeURI(answer2);
             const answer3 = document.getElementById('answer3').value;
 
-            const url = `https://example.com/vast?param1=${answer1}&param2=${answer2}&param3=${answer3}`;
+            const url = `https://pubads.g.doubleclick.net/gampad/ads?iu=${answer1}&sz=${answer2}&param3=${answer3}`;
             document.getElementById('result-url').textContent = url;
 
             document.getElementById('wizard').style.display = 'none';
