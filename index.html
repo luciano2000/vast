@@ -3,483 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabela de Parâmetros</title>
+    <title>Wizard Form</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 20px;
+        .wizard-step {
+            display: none;
         }
-        #container {
-            width:980px;
-            margin: 0 auto;
+        .wizard-step.active {
+            display: block;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 18px;
-            text-align: left;
-            background-color: #fff;
-        }
-        th, td {
-            padding: 12px 15px;
-        }
-        thead tr {
-            background-color: #009879;
-            color: #ffffff;
-            text-align: left;
-        }
-        tbody tr {
-            border-bottom: 1px solid #dddddd;
-        }
-        tbody tr:nth-of-type(even) {
-            background-color: #f3f3f3;
-        }
-        tbody tr:last-of-type {
-            border-bottom: 2px solid #009879;
-        }
-        td span {
-            display: inline-block;
-            width: 100%;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
+        .result {
+            display: none;
         }
     </style>
 </head>
-<body><div id="container">
-        <div>
-        <label>Your Network Code
-            <input type="text" id="iu" placeholder="/12345/slotname/"> 
-        </label>
-        <br>        
-        <label>
-            Player Starts Stopped? <input type="checkbox" checked id="playerStopped" onclick="updateCheckboxes()"> 
-        </label>
-        <br>
-        <label>
-            Player Muted? <input type="checkbox" id="playerMuted" onclick="updateCheckboxes()"> 
-        </label>
+<body>
+    <div id="wizard">
+        <div class="wizard-step active" id="step1">
+            <h2>Step 1</h2>
+            <p>Question 1: <input type="text" id="answer1"></p>
+            <button onclick="nextStep(1)">Next</button>
+        </div>
+        <div class="wizard-step" id="step2">
+            <h2>Step 2</h2>
+            <p>Question 2: <input type="text" id="answer2"></p>
+            <button onclick="nextStep(2)">Next</button>
+        </div>
+        <div class="wizard-step" id="step3">
+            <h2>Step 3</h2>
+            <p>Question 3: <input type="text" id="answer3"></p>
+            <button onclick="showResult()">Finish</button>
+        </div>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>ACTIVE</th>
-                <th>PARAM</th>
-                <th>VALUE</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="The audio continuous play parameter accepts a constant value that indicates whether the player intends to continuously play audio content.
+    <div id="result" class="result">
+        <h2>Your URL</h2>
+        <p id="result-url"></p>
+    </div>
 
-                    This parameter should be left unset if it's not known.
-                    
-                    Usage example
-                    Continuous play ON:
-                    aconp=2
-                    
-                    Continuous play OFF:
-                    aconp=1">aconp</span></td>
-                <td><input type="text" name="value1"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked disabled></td>
-                <td><span title="The ad rule parameter accepts a constant value that indicates whether to return a VAST creative or an ad rules response.
+    <script>
+        function nextStep(currentStep) {
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            document.getElementById(`step${currentStep + 1}`).classList.add('active');
+        }
 
-                    The default setting for ad rules depends on an Ad Manager network setting. You can override the setting for specific ad tags using the examples below.
-                    
-                    Usage example
-                    Request for VAST creative:
-                    ad_rule=0
-                    
-                    Request for ad rules (VMAP):
-                    ad_rule=1">ad_rule</span></td>
-                <td><input type="text" name="value2"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="The ad type parameters accept a constant value that indicates the ad types that should be returned for the request.
+        function showResult() {
+            const answer1 = document.getElementById('answer1').value;
+            const answer2 = document.getElementById('answer2').value;
+            const answer3 = document.getElementById('answer3').value;
 
-                    This parameter is only required for audio ads.
-                    
-                    When ad_type is set to audio or audio_video, the vpmute parameter must be set to 0.
-                    Usage examples
-                    Allows only audio ads:
-                    ad_type=audio
-                    
-                    Allows both skippable and non-skippable video ads:
-                    ad_type=video
-                    
-                    Allows both audio and video ads:
-                    ad_type=audio_video
-                    (This value allows both formats to compete, but only one serves.)
-                    
-                    The audio_video ad type is intended to be used only for serving video creatives into audio content that supports video ad playback or audio creatives into in-stream video players for content that can be 'listenable in nature. For example, sports streams, videocasts, news, etc.
-                    Read more about audio in video content.
-                    
-                    Allows only skippable video ads:
-                    ad_type=skippablevideo
-                    
-                    Allows only non-skippable video ads:
-                    ad_type=standardvideo">ad_type</span></td>
-                <td><input type="text" name="value3"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="addtl_consent">addtl_consent</span></td>
-                <td><input type="text" name="value4"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="afvsz">afvsz</span></td>
-                <td><input type="text" name="value5"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="allcues">allcues</span></td>
-                <td><input type="text" name="value6"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="an">an</span></td>
-                <td><input type="text" name="value7"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="ciu_szs">ciu_szs</span></td>
-                <td><input type="text" name="value8"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="correlator">correlator</span></td>
-                <td><input type="text" name="value9"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="cmsid">cmsid</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="cust_params">cust_params</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="description_url">description_url</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="env">env</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="excl_cat">excl_cat</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="gdfp_req">gdfp_req</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="gdpr">gdpr</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="gdpr_consent">gdpr_consent</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="hl">hl</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="iabexcl">iabexcl</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="idtype">idtype</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="ipd">ipd</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="ipe">ipe</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="is_lat">is_lat</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="iu">iu</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="lip">lip</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="ltd">ltd</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="max_ad_duration">max_ad_duration</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="min_ad_duration">min_ad_duration</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="mridx">mridx</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="msid">msid</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="nofb">nofb</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="npa">npa</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="omid_p">omid_p</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="output">output</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="plcmt">plcmt</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="pmad">pmad</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="pmnd">pmnd</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="pmxd">pmxd</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="pod">pod</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="pp">pp</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="ppt">ppt</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="ppid">ppid</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="ppos">ppos</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="ppsj">ppsj</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="ptpl">ptpl</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="ptpln">ptpln</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="pubf">pubf</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="pvid">pvid</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="pvid_s">pvid_s</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="pvtf">pvtf</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="rdid">rdid</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="rdp">rdp</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="scor">scor</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="sdk_apis">sdk_apis</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="sdmax">sdmax</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="sid">sid</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="ssss">ssss</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="sz">sz</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="tfcd">tfcd</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="trt">trt</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="unviewed_position_start">unviewed_position_start</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="url">url</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="vad_type">vad_type</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="vconp">vconp</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="vid">vid</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="vid_d">vid_d</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" id="vpa"></td>
-                <td><span title="vpa">vpa</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <<td><span title="vpi">vpi</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" id="vpmute"></td>
-                <td><span title="vpmute">vpmute</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="vpos">vpos</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked></td>
-                <td><span title="wta">wta</span></td>
-                <td><input type="text" name="value10"></td>
-            </tr>
-           
-            <!-- Continue adicionando as linhas conforme necessário -->
-        </tbody>
-    </table></div>
-        <script>
-        function updateCheckboxes() {
-            const playerStopped = document.getElementById('playerStopped').checked;
-            const playerMuted = document.getElementById('playerMuted').checked;
+            const url = `https://example.com/vast?param1=${answer1}&param2=${answer2}&param3=${answer3}`;
+            document.getElementById('result-url').textContent = url;
 
-            document.getElementById('vpa').checked = playerStopped;
-            document.getElementById('vpmute').checked = playerMuted;
+            document.getElementById('wizard').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
         }
     </script>
 </body>
