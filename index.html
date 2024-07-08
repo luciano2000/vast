@@ -51,6 +51,15 @@
     </style>
 </head>
 <body><div id="container">
+        <div>
+        <label>
+            <input type="checkbox" id="playerStopped" onclick="updateCheckboxes()"> Player Starts Stopped
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" id="playerMuted" onclick="updateCheckboxes()"> Player Muted
+        </label>
+    </div>
     <table>
         <thead>
             <tr>
@@ -424,5 +433,14 @@
             <!-- Continue adicionando as linhas conforme necessário -->
         </tbody>
     </table></div>
+        <script>
+        function updateCheckboxes() {
+            const playerStopped = document.getElementById('playerStopped').checked;
+            const playerMuted = document.getElementById('playerMuted').checked;
+
+            document.getElementById('checkbox1').checked = playerStopped;
+            document.getElementById('checkbox2').checked = playerMuted;
+        }
+    </script>
 </body>
 </html>
