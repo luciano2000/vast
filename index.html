@@ -6,24 +6,24 @@
     <title>AdManager Vast Generator</title>
     <style>
         body {
-            background-color: #f0f0f0; /* Fundo cinza claro */
+            background-color: #f0f0f0; /* Light gray background */
             font-family: Arial, sans-serif;
         }
         .wizard-container {
             max-width: 600px;
             margin: 20px auto;
-            background-color: #ffffff; /* Fundo branco */
+            background-color: #ffffff; /* White background */
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
         }
         .wizard-step {
             display: none;
-            border: 1px solid #dddddd; /* Bordas cinza claro */
+            border: 1px solid #dddddd; /* Light gray borders */
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
-            background-color: #ffffff; /* Fundo branco */
+            background-color: #ffffff; /* White background */
         }
         .wizard-step.active {
             display: block;
@@ -49,10 +49,10 @@
         .result {
             display: none;
             margin-top: 20px;
-            border: 1px solid #dddddd; /* Bordas cinza claro */
+            border: 1px solid #dddddd; /* Light gray borders */
             border-radius: 8px;
             padding: 20px;
-            background-color: #ffffff; /* Fundo branco */
+            background-color: #ffffff; /* White background */
         }
         .result.active {
             display: block;
@@ -72,68 +72,68 @@
     <div class="wizard-container">
         <div id="wizard">
             <div class="wizard-step active" id="step1">
-                <h2>Informações Obrigatórias</h2>
+                <h2>Mandatory Information</h2>
                 <p>Network Code: <input type="text" id="answer1" placeholder="/12345/slotname"><span class="error" id="error1"></span></p>
                 <div class="wizard-step-buttons">
-                    <button onclick="nextStep(1)">Próximo</button>
+                    <button onclick="nextStep(1)">Next</button>
                 </div>
             </div>
             <div class="wizard-step" id="step2">
-                <h2>Informações Obrigatórias</h2>
+                <h2>Mandatory Information</h2>
                 <p>Size: <input type="text" id="answer2" value="300x250|400x300|640x480"></p>
                 <div class="wizard-step-buttons">
-                    <button onclick="prevStep(2)">Anterior</button>
-                    <button onclick="nextStep(2)">Próximo</button>
+                    <button onclick="prevStep(2)">Previous</button>
+                    <button onclick="nextStep(2)">Next</button>
                 </div>
             </div>
             <div class="wizard-step" id="step3">
-                <h2>Sobre o Player</h2>
-                <p>Player Começa Parado? <select id="answer3"><option value="click">Sim</option><option value="auto">Não</option></select><span class="dica">Recomenda-se o Player Parado</span></p>
+                <h2>About the Player</h2>
+                <p>Player Starts Paused? <select id="answer3"><option value="click">Yes</option><option value="auto">No</option></select><span class="dica">It's recommended to start the player paused</span></p>
                 <div class="wizard-step-buttons">
-                    <button onclick="prevStep(3)">Anterior</button>
-                    <button onclick="nextStep(3)">Próximo</button>
+                    <button onclick="prevStep(3)">Previous</button>
+                    <button onclick="nextStep(3)">Next</button>
                 </div>
             </div>        
             <div class="wizard-step" id="step4">
-                <h2>Sobre o Player</h2>
-                <p>Player Começa Mutado? <select id="answer4"><option value="1">Sim</option><option value="0" selected>Não</option></select><span class="dica">Recomenda-se "Não" se a Opção Anterior For Parado</span></p>
+                <h2>About the Player</h2>
+                <p>Player Starts Muted? <select id="answer4"><option value="1">Yes</option><option value="0" selected>No</option></select><span class="dica">Recommended "No" if Previous Option is Paused</span></p>
                 <div class="wizard-step-buttons">
-                    <button onclick="prevStep(4)">Voltar</button>
-                    <button onclick="nextStep(4)">Próximo</button>
+                    <button onclick="prevStep(4)">Back</button>
+                    <button onclick="nextStep(4)">Next</button>
                 </div>
             </div>
             <div class="wizard-step" id="step5">
-                <h2>Sobre o Player</h2>
-                <p>Ambiente do Player <select id="answer5"><option value="vp">Apenas Vídeo</option><option value="instream">Vídeo & Audio</option></select><span class="dica"></span></p>
+                <h2>About the Player</h2>
+                <p>Player Environment <select id="answer5"><option value="vp">Video Only</option><option value="instream" selected>Video & Audio</option></select><span class="dica"></span></p>
                 <div class="wizard-step-buttons">
-                    <button onclick="prevStep(5)">Voltar</button>
-                    <button onclick="nextStep(5)">Próximo</button>
+                    <button onclick="prevStep(5)">Back</button>
+                    <button onclick="nextStep(5)">Next</button>
                 </div>
             </div>           
             <div class="wizard-step" id="step6">
-                <h2>Sobre o Player</h2>
-                <p>Padrão AdManager <select id="answer6"><option value="1">Sim</option><option value="0">Não</option></select><span class="dica"></span></p>
+                <h2>About the Player</h2>
+                <p>AdManager Default <select id="answer6"><option value="1">Yes</option><option value="0" selected>No</option></select><span class="dica"></span></p>
                 <div class="wizard-step-buttons">
-                    <button onclick="prevStep(6)">Voltar</button>
-                    <button onclick="nextStep(6)">Próximo</button>
+                    <button onclick="prevStep(6)">Back</button>
+                    <button onclick="nextStep(6)">Next</button>
                 </div>
             </div>  
             <div class="wizard-step" id="step7">
-                <h2>Sobre o Player</h2>
-                <p>Player In-Stream <select id="answer7"><option value="1">Sim</option><option value="2">Não</option></select><span class="dica">Se seu player exibe conteúdo em video seu (institucional) deixe SIM</span></p>
+                <h2>About the Player</h2>
+                <p>Player In-Stream <select id="answer7"><option value="1">Yes</option><option value="2" selected>No</option></select><span class="dica">If your player displays video content in your (institutional) video, leave it as YES</span></p>
                 <div class="wizard-step-buttons">
-                    <button onclick="prevStep(7)">Voltar</button>
-                    <button onclick="showResult()">Gerar VAST</button>
+                    <button onclick="prevStep(7)">Back</button>
+                    <button onclick="showResult()">Generate VAST</button>
                 </div>
             </div>       
         </div>
         <div id="result" class="result">
-            <h2>Aqui está seu VAST</h2>
+            <h2>Here's your VAST</h2>
             <textarea id="result-url" rows="5" readonly></textarea>
-            <button onclick="copyToClipboard()">Copiar para Clipboard</button>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
         </div>
         <div class="disclaimer">
-            <p>Aviso: Esta é uma ferramenta para auxiliar na criação do VAST com os novos parâmetros obrigatórios, porém não nos responsabilizamos pela não entrega correta da publicidade. Por favor, revise sua Tag Vast perante a documentação do Google disponível em <a href="https://support.google.com/admanager/answer/10678356?hl=pt-BR&ref_topic=10684636&sjid=7028043128482364746-SA">https://support.google.com/admanager/answer/10678356?hl=pt-BR&ref_topic=10684636&sjid=7028043128482364746-SA</a>.</p>
+            <p>Disclaimer: This is a tool to assist in creating VAST with the new mandatory parameters, but we are not responsible for incorrect delivery of advertising. Please review your VAST Tag against Google's documentation available at <a href="https://support.google.com/admanager/answer/10678356?hl=en&ref_topic=10684636&sjid=7028043128482364746-SA">https://support.google.com/admanager/answer/10678356?hl=en&ref_topic=10684636&sjid=7028043128482364746-SA</a>.</p>
         </div>
     </div>
 
@@ -143,7 +143,7 @@
                 const answer1 = document.getElementById('answer1').value;
                 const regex = /^\/\d+\/[a-zA-Z0-9]+(\/[a-zA-Z0-9]+)?$/;                
                 if (!answer1 || !regex.test(answer1)) {
-                    document.getElementById('error1').textContent = 'Por favor, insira um valor no formato "/12345/slotname".';
+                    document.getElementById('error1').textContent = 'Please enter a value in the format "/12345/slotname".';
                     return;
                 } else {
                     document.getElementById('error1').textContent = '';
@@ -177,7 +177,7 @@
             const textarea = document.getElementById('result-url');
             textarea.select();
             document.execCommand('copy');
-            alert('VAST copiado para a área de transferência!');
+            alert('VAST copied to clipboard!');
         }
     </script>
 </body>
