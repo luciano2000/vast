@@ -14,6 +14,9 @@
         .result {
             display: none;
         }
+        .dica {
+            font-color: #008800;
+        }
     </style>
 </head>
 <body>
@@ -21,7 +24,7 @@
         <div class="wizard-step active" id="step1">
             <h2>Informações Obrigatórias</h2>
             <p>Network Code: <input type="text" id="answer1" placeholder="/12345/slotname"></p>
-            <button onclick="nextStep(1)">Next</button>
+            <button onclick="nextStep(1)">Próximo</button>
         </div>
         <div class="wizard-step" id="step2">
             <h2>Informações Obrigatórias</h2>
@@ -31,13 +34,13 @@
         </div>
         <div class="wizard-step" id="step3">
             <h2>Sobre o Player</h2>
-            <p>Player Começa Parado? <select id="answer3"><option value="click">Sim</option><option value="auto">Não</option></select></p>
-            <button onclick="prevStep(3)">Back</button>
-            <button onclick="nextStep(3)">Next</button>
+            <p>Player Começa Parado? <select id="answer3"><option value="click">Sim</option><option value="auto">Não</option></select><span class="dica">Recomenda-se o Player Parado</span></p>
+            <button onclick="prevStep(3)">Anterior</button>
+            <button onclick="nextStep(3)">Próximo</button>
         </div>        
         <div class="wizard-step" id="step4">
             <h2>Sobre o Player</h2>
-            <p>Player Começa Mutado? <select id="answer4"><option value="1">Sim</option><option value="0">Não</option></select></p>
+            <p>Player Começa Mutado? <select id="answer4"><option value="1">Sim</option><option value="0" selected>Não</option></select><span class="dica">Recomenda-se o Player Com Som Se a Opção Anterior For Parado</span></p>
             <button onclick="prevStep(4)">Voltar</button>
             <button onclick="showResult()">Gerar VAST</button>
         </div>
