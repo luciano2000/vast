@@ -5,14 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabela de Parâmetros</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px 15px;
+        }
+        thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+        tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+        tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+        tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
         td span {
             display: inline-block;
             width: 100%;
         }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>ACTIVE</th>
@@ -23,38 +58,366 @@
         <tbody>
             <tr>
                 <td><input type="checkbox" checked></td>
-                <td><span title="The audio continuous play parameter accepts a constant value that indicates whether the player intends to continuously play audio content.
-
-This parameter should be left unset if it's not known.
-
-Usage example
-Continuous play ON:
-aconp=2
-
-Continuous play OFF:
-aconp=1">aconp</span></td>
+                <td><span title="aconp">aconp</span></td>
                 <td><input type="text" name="value1"></td>
             </tr>
             <tr>
                 <td><input type="checkbox" checked disabled></td>
-                <td><span title="Este é o parâmetro 2">Parâmetro 2</span></td>
+                <td><span title="ad_rule">ad_rule</span></td>
                 <td><input type="text" name="value2"></td>
             </tr>
             <tr>
                 <td><input type="checkbox"></td>
-                <td><span title="Este é o parâmetro 3">Parâmetro 3</span></td>
+                <td><span title="ad_type">ad_type</span></td>
                 <td><input type="text" name="value3"></td>
             </tr>
             <tr>
                 <td><input type="checkbox"></td>
-                <td><span title="Este é o parâmetro 4">Parâmetro 4</span></td>
+                <td><span title="addtl_consent">addtl_consent</span></td>
                 <td><input type="text" name="value4"></td>
             </tr>
             <tr>
                 <td><input type="checkbox"></td>
-                <td><span title="Este é o parâmetro 5">Parâmetro 5</span></td>
+                <td><span title="afvsz">afvsz</span></td>
                 <td><input type="text" name="value5"></td>
             </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="allcues">allcues</span></td>
+                <td><input type="text" name="value6"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="an">an</span></td>
+                <td><input type="text" name="value7"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="ciu_szs">ciu_szs</span></td>
+                <td><input type="text" name="value8"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="correlator">correlator</span></td>
+                <td><input type="text" name="value9"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cust_params">cust_params</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="description_url">description_url</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="env">env</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="excl_cat">excl_cat</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="gdfp_req">gdfp_req</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="gdpr">gdpr</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="gdpr_consent">gdpr_consent</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="hl">hl</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="iabexcl">iabexcl</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="idtype">idtype</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="ipd">ipd</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="ipe">ipe</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="is_lat">is_lat</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="iu">iu</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="lip">lip</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="ltd">ltd</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="max_ad_duration">max_ad_duration</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="min_ad_duration">min_ad_duration</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><span title="cmsid">cmsid</span></td>
+                <td><input type="text" name="value10"></td>
+            </tr>
+            
+            <!-- Continue adicionando as linhas conforme necessário -->
         </tbody>
     </table>
 </body>
