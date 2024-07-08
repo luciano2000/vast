@@ -404,7 +404,7 @@
                 <td><input type="text" name="value10"></td>
             </tr>
             <tr>
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" id="vpa"></td>
                 <td><span title="vpa">vpa</span></td>
                 <td><input type="text" name="value10"></td>
             </tr>
@@ -414,7 +414,7 @@
                 <td><input type="text" name="value10"></td>
             </tr>
             <tr>
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" id="vpmute"></td>
                 <td><span title="vpmute">vpmute</span></td>
                 <td><input type="text" name="value10"></td>
             </tr>
@@ -437,7 +437,7 @@
             const playerStopped = document.getElementById('playerStopped').checked;
             const playerMuted = document.getElementById('playerMuted').checked;
 
-            document.getElementById('checkbox1').checked = playerStopped;
+            document.getElementById('vpa').checked = playerStopped;
             document.getElementById('vpmute').checked = playerMuted;
         }
     </script>
