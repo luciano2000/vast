@@ -79,9 +79,33 @@
                 <p>Player Começa Mutado? <select id="answer4"><option value="1">Sim</option><option value="0" selected>Não</option></select><span class="dica">Recomenda-se "Não" se a Opção Anterior For Parado</span></p>
                 <div class="wizard-step-buttons">
                     <button onclick="prevStep(4)">Voltar</button>
-                    <button onclick="showResult()">Gerar VAST</button>
+                    <button onclick="nextStep(4)">Próximo</button>
                 </div>
             </div>
+            <div class="wizard-step" id="step5">
+                <h2>Sobre o Player</h2>
+                <p>Ambiente do Player <select id="answer5"><option value="vp">Apenas Vídeo</option><option value="instream" selected>Vídeo & Audio</option></select><span class="dica"></span></p>
+                <div class="wizard-step-buttons">
+                    <button onclick="prevStep(5)">Voltar</button>
+                    <button onclick="nextStep(5)">Próximo</button>
+                </div>
+            </div>           
+            <div class="wizard-step" id="step6">
+                <h2>Sobre o Player</h2>
+                <p>Padrão AdManager <select id="answer6"><option value="1">Sim</option><option value="0" selected>Não</option></select><span class="dica"></span></p>
+                <div class="wizard-step-buttons">
+                    <button onclick="prevStep(6)">Voltar</button>
+                    <button onclick="nextStep(6)">Próximo</button>
+                </div>
+            </div>  
+            <div class="wizard-step" id="step7">
+                <h2>Sobre o Player</h2>
+                <p>Player In-Stream <select id="answer7"><option value="1">Sim</option><option value="2" selected>Não</option></select><span class="dica">Se seu player exibe conteúdo em video seu (institucional) deixe SIM</span></p>
+                <div class="wizard-step-buttons">
+                    <button onclick="prevStep(7)">Voltar</button>
+                    <button onclick="showResult()">Gerar VAST</button>
+                </div>
+            </div>       
         </div>
         <div id="result" class="result" style="display:none;">
             <h2>Aqui está seu VAST</h2>
@@ -116,8 +140,11 @@
             answer2 = encodeURI(answer2);
             const answer3 = document.getElementById('answer3').value;
             const answer4 = document.getElementById('answer4').value;
+            const answer5 = document.getElementById('answer5').value;
+            const answer6 = document.getElementById('answer6').value;
+            const answer7 = document.getElementById('answer7').value;
 
-            const url = `https://pubads.g.doubleclick.net/gampad/ads?iu=${answer1}&sz=${answer2}&vpa=${answer3}&vpmute=${answer4}`;
+            const url = `https://pubads.g.doubleclick.net/gampad/ads?iu=${answer1}&sz=${answer2}&vpa=${answer3}&vpmute=${answer4}&env=${answer5}&gdfp_req=${answer6}&plcmt=${answer7}&output=vast&unviewed_position_start=1&url=[placeholder]&description_url=[placeholder]&orrelator=`;
             document.getElementById('result-url').textContent = url;
 
             document.getElementById('wizard').style.display = 'none';
