@@ -5,14 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdManager Vast Generator</title>
     <style>
+        body {
+            background-color: #f0f0f0; /* Fundo cinza claro */
+            font-family: Arial, sans-serif;
+        }
+        .wizard-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff; /* Fundo branco */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        }
         .wizard-step {
             display: none;
+            border: 1px solid #dddddd; /* Bordas cinza claro */
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #ffffff; /* Fundo branco */
         }
         .wizard-step.active {
             display: block;
         }
-        .result {
-            display: none;
+        .wizard-step-buttons {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .wizard-step-buttons button {
+            margin-left: 10px;
+        }
+        .wizard-step-buttons button:first-child {
+            margin-left: 0;
         }
         .dica {
             color: green;
@@ -25,43 +49,53 @@
     </style>
 </head>
 <body>
-    <div id="wizard">
-        <div class="wizard-step active" id="step1">
-            <h2>Informações Obrigatórias</h2>
-            <p>Network Code: <input type="text" id="answer1" placeholder="/12345/slotname"><span class="error" id="error1"></span></p>
-            <button onclick="nextStep(1)">Próximo</button>
+    <div class="wizard-container">
+        <div id="wizard">
+            <div class="wizard-step active" id="step1">
+                <h2>Informações Obrigatórias</h2>
+                <p>Network Code: <input type="text" id="answer1" placeholder="/12345/slotname"><span class="error" id="error1"></span></p>
+                <div class="wizard-step-buttons">
+                    <button onclick="nextStep(1)">Próximo</button>
+                </div>
+            </div>
+            <div class="wizard-step" id="step2">
+                <h2>Informações Obrigatórias</h2>
+                <p>Size: <input type="text" id="answer2" value="300x250|400x300|640x480"></p>
+                <div class="wizard-step-buttons">
+                    <button onclick="prevStep(2)">Anterior</button>
+                    <button onclick="nextStep(2)">Próximo</button>
+                </div>
+            </div>
+            <div class="wizard-step" id="step3">
+                <h2>Sobre o Player</h2>
+                <p>Player Começa Parado? <select id="answer3"><option value="click">Sim</option><option value="auto">Não</option></select><span class="dica">Recomenda-se o Player Parado</span></p>
+                <div class="wizard-step-buttons">
+                    <button onclick="prevStep(3)">Anterior</button>
+                    <button onclick="nextStep(3)">Próximo</button>
+                </div>
+            </div>        
+            <div class="wizard-step" id="step4">
+                <h2>Sobre o Player</h2>
+                <p>Player Começa Mutado? <select id="answer4"><option value="1">Sim</option><option value="0" selected>Não</option></select><span class="dica">Recomenda-se "Não" se a Opção Anterior For Parado</span></p>
+                <div class="wizard-step-buttons">
+                    <button onclick="prevStep(4)">Voltar</button>
+                    <button onclick="showResult()">Gerar VAST</button>
+                </div>
+            </div>
         </div>
-        <div class="wizard-step" id="step2">
-            <h2>Informações Obrigatórias</h2>
-            <p>Size: <input type="text" id="answer2" value="300x250|400x300|640x480"></p>
-            <button onclick="prevStep(2)">Anterior</button>
-            <button onclick="nextStep(2)">Próximo</button>
+        <div id="result" class="result">
+            <h2>Aqui está seu VAST</h2>
+            <p id="result-url"></p>
         </div>
-        <div class="wizard-step" id="step3">
-            <h2>Sobre o Player</h2>
-            <p>Player Começa Parado? <select id="answer3"><option value="click">Sim</option><option value="auto">Não</option></select><span class="dica">Recomenda-se o Player Parado</span></p>
-            <button onclick="prevStep(3)">Anterior</button>
-            <button onclick="nextStep(3)">Próximo</button>
-        </div>        
-        <div class="wizard-step" id="step4">
-            <h2>Sobre o Player</h2>
-            <p>Player Começa Mutado? <select id="answer4"><option value="1">Sim</option><option value="0" selected>Não</option></select><span class="dica">Recomenda-se "Não" se a Opção Anterior For Parado</span></p>
-            <button onclick="prevStep(4)">Voltar</button>
-            <button onclick="showResult()">Gerar VAST</button>
-        </div>
-    </div>
-    <div id="result" class="result">
-        <h2>Aqui está seu VAST</h2>
-        <p id="result-url"></p>
     </div>
 
     <script>
         function nextStep(currentStep) {
             if (currentStep === 1) {
                 const answer1 = document.getElementById('answer1').value;
-                const regex = /^\/\d+\/[a-zA-Z0-9]+$/;
+                const regex = /^\/\d+\/[a-zA-Z0-9]+(\/[a-zA-Z0-9]+)?$/;                
                 if (!answer1 || !regex.test(answer1)) {
-                    document.getElementById('error1').textContent = 'Por favor, insira um valor no formato "/12345/slotname".';
+                    document.getElementById('error1').textContent = 'Por favor, insira um valor no formato "/NUMERO/LETRASENUMEROS".';
                     return;
                 } else {
                     document.getElementById('error1').textContent = '';
