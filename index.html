@@ -28,7 +28,7 @@
     <div id="wizard">
         <div class="wizard-step active" id="step1">
             <h2>Informações Obrigatórias</h2>
-            <p>Network Code: <input type="text" id="answer1" placeholder="/12345/slotname"><span class="error" id="error1"></span></p>
+            <p>Network Code: <input type="text" id="answer1" placeholder="/0000/aaaa"><span class="error" id="error1"></span></p>
             <button onclick="nextStep(1)">Próximo</button>
         </div>
         <div class="wizard-step" id="step2">
@@ -45,7 +45,7 @@
         </div>        
         <div class="wizard-step" id="step4">
             <h2>Sobre o Player</h2>
-            <p>Player Começa Mutado? <select id="answer4"><option value="1">Sim</option><option value="0" selected>Não</option></select><span class="dica">Recomenda-se "Não' Se a Opção Anterior For Parado</span></p>
+            <p>Player Começa Mutado? <select id="answer4"><option value="1">Sim</option><option value="0" selected>Não</option></select><span class="dica">Recomenda-se "Não" se a Opção Anterior For Parado</span></p>
             <button onclick="prevStep(4)">Voltar</button>
             <button onclick="showResult()">Gerar VAST</button>
         </div>
@@ -61,7 +61,7 @@
                 const answer1 = document.getElementById('answer1').value;
                 const regex = /^\/\d{4}\/[a-zA-Z0-9]+$/;
                 if (!answer1 || !regex.test(answer1)) {
-                    document.getElementById('error1').textContent = 'Por favor, insira um valor no formato "/12345/slotname".';
+                    document.getElementById('error1').textContent = 'Por favor, insira um valor no formato "/0000/aaaa".';
                     return;
                 } else {
                     document.getElementById('error1').textContent = '';
