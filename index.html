@@ -28,7 +28,7 @@
     <div id="wizard">
         <div class="wizard-step active" id="step1">
             <h2>Informações Obrigatórias</h2>
-            <p>Network Code: <input type="text" id="answer1" placeholder="/0000/aaaa"><span class="error" id="error1"></span></p>
+            <p>Network Code: <input type="text" id="answer1" placeholder="/12345/slotname"><span class="error" id="error1"></span></p>
             <button onclick="nextStep(1)">Próximo</button>
         </div>
         <div class="wizard-step" id="step2">
@@ -59,9 +59,9 @@
         function nextStep(currentStep) {
             if (currentStep === 1) {
                 const answer1 = document.getElementById('answer1').value;
-                const regex = /^\/\d{4}\/[a-zA-Z0-9]+$/;
+                const regex = /^\/\d+\/[a-zA-Z0-9]+$/;
                 if (!answer1 || !regex.test(answer1)) {
-                    document.getElementById('error1').textContent = 'Por favor, insira um valor no formato "/0000/aaaa".';
+                    document.getElementById('error1').textContent = 'Por favor, insira um valor no formato "/12345/slotname".';
                     return;
                 } else {
                     document.getElementById('error1').textContent = '';
