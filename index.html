@@ -46,6 +46,26 @@
         .error {
             color: red;
         }
+        .result {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #dddddd; /* Bordas cinza claro */
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #ffffff; /* Fundo branco */
+        }
+        .result.active {
+            display: block;
+        }
+        .disclaimer {
+            font-size: small;
+            margin-top: 20px;
+            color: #666666;
+        }
+        .disclaimer a {
+            color: #666666;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -107,9 +127,13 @@
                 </div>
             </div>       
         </div>
-        <div id="result" class="result" style="display:none;">
+        <div id="result" class="result">
             <h2>Aqui está seu VAST</h2>
-            <p id="result-url"></p>
+            <textarea id="result-url" rows="5" readonly></textarea>
+            <button onclick="copyToClipboard()">Copiar para Clipboard</button>
+        </div>
+        <div class="disclaimer">
+            <p>Aviso: Esta é uma ferramenta para auxiliar na criação do VAST com os novos parâmetros obrigatórios, porém não nos responsabilizamos pela não entrega correta da publicidade. Por favor, revise sua Tag Vast perante a documentação do Google disponível em <a href="https://support.google.com/admanager/answer/10678356?hl=pt-BR&ref_topic=10684636&sjid=7028043128482364746-SA">https://support.google.com/admanager/answer/10678356?hl=pt-BR&ref_topic=10684636&sjid=7028043128482364746-SA</a>.</p>
         </div>
     </div>
 
@@ -146,9 +170,14 @@
 
             const url = `https://pubads.g.doubleclick.net/gampad/ads?iu=${answer1}&sz=${answer2}&vpa=${answer3}&vpmute=${answer4}&env=${answer5}&gdfp_req=${answer6}&plcmt=${answer7}&output=vast&unviewed_position_start=1&url=[placeholder]&description_url=[placeholder]&orrelator=`;
             document.getElementById('result-url').textContent = url;
+            document.getElementById('result').classList.add('active');
+        }
 
-            document.getElementById('wizard').style.display = 'none';
-            document.getElementById('result').style.display = 'block';
+        function copyToClipboard() {
+            const textarea = document.getElementById('result-url');
+            textarea.select();
+            document.execCommand('copy');
+            alert('VAST copiado para a área de transferência!');
         }
     </script>
 </body>
