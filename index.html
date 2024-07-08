@@ -26,16 +26,19 @@
         <div class="wizard-step" id="step2">
             <h2>Informações Obrigatórias</h2>
             <p>Size: <input type="text" id="answer2" value="300x250|400x300|640x480"></p>
-            <button onclick="nextStep(2)">Next</button>
+            <button onclick="prevStep(2)">Anterior</button>
+            <button onclick="nextStep(2)">Próximo</button>
         </div>
         <div class="wizard-step" id="step3">
             <h2>Sobre o Player</h2>
             <p>Player Começa Parado? <select id="answer3"><option value="click">Sim</option><option value="auto">Não</option></select></p>
+            <button onclick="prevStep(3)">Back</button>
             <button onclick="nextStep(3)">Next</button>
         </div>        
         <div class="wizard-step" id="step4">
             <h2>Sobre o Player</h2>
             <p>Player Começa Mutado? <select id="answer4"><option value="1">Sim</option><option value="0">Não</option></select></p>
+            <button onclick="prevStep(4)">Voltar</button>
             <button onclick="showResult()">Gerar VAST</button>
         </div>
     </div>
@@ -48,6 +51,11 @@
         function nextStep(currentStep) {
             document.getElementById(`step${currentStep}`).classList.remove('active');
             document.getElementById(`step${currentStep + 1}`).classList.add('active');
+        }
+
+        function prevStep(currentStep) {
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            document.getElementById(`step${currentStep - 1}`).classList.add('active');
         }
 
         function showResult() {
