@@ -142,7 +142,7 @@
         function nextStep(currentStep) {
             if (currentStep === 1) {
                 const answer1 = document.getElementById('answer1').value;
-                const regex = /^\/\d+\/[a-zA-Z0-9]+(\/[a-zA-Z0-9]+)?$/;                
+                const regex = /^\/[\d,]+\/[a-zA-Z0-9._-]+$/;
                 if (!answer1 || !regex.test(answer1)) {
                     document.getElementById('error1').textContent = 'Please enter a value in the format "/12345/slotname".';
                     return;
